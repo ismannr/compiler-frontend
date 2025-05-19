@@ -7,8 +7,6 @@ const AboutSection = () => {
   useEffect(() => {
     const aboutMainSection = document.getElementById('about-main');
     const captionSection = document.getElementById('about-caption');
-    const header = document.getElementById('header');
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

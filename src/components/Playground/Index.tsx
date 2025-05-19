@@ -89,7 +89,7 @@ const Playground = () => {
         setTerminalOutput(prev => prev + msg);
       };
 
-      socket.onerror = (e) => {
+      socket.onerror = () => {
         setTerminalOutput(prev => prev + "\n> Session error." + "\n");
       };
 

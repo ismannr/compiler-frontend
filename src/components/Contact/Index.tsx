@@ -3,7 +3,7 @@ import "./Contact.css";
 import { toast, ToastContainer } from "react-toastify";
 
 const Contact = () => {
-  const [emailMessage, setEmailMessage] = useState("");
+  const [, setEmailMessage] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);

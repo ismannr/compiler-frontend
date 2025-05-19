@@ -11,7 +11,7 @@ function App() {
   const [showLegend, setShowLegend] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [isScrollEnabled, setIsScrollEnabled] = useState(false);
-  const [isManualScroll, setIsManualScroll] = useState(false);
+  const [, setIsManualScroll] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = isScrollEnabled ? 'auto' : 'hidden';
