@@ -1,0 +1,116 @@
+  .playground-section {
+      justify-content: center;
+      padding: 50px 20px;
+      background-color: #232324;
+  }
+
+  .playground-title {
+      font-size: 36px;
+      font-weight: bold;
+      color: #ffe66d;
+      margin-bottom: 30px;
+      text-align: center;
+      font-family: 'Heavitas', sans-serif;
+  }
+
+  .playground-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .browser-frame {
+      background: #18181a;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgb(0, 0, 0);
+      overflow: hidden;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      position: relative;
+      width: 1000px;
+      max-width: 100vw;
+  }
+
+  .browser-frame-header {
+      height: 36px;
+      background: #222222;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      border-bottom: 1px solid #222;
+      border-radius: 12px 12px 0 0;
+      gap: 8px;
+  }
+
+  .browser-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
+  }
+
+  .browser-dot.red {
+      background: #ff5f56;
+  }
+
+  .browser-dot.yellow {
+      background: #ffbd2e;
+  }
+
+  .browser-dot.green {
+      background: #27c93f;
+  }
+
+.playground-terminal {
+  background: #18181a;
+  color: #ffe66d;
+  font-family: monospace;
+  font-size: 16px;
+  padding: 0;
+  border-top: 1px solid #232324;
+  min-height: 120px;
+  max-height: 200px;
+  margin-top: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.playground-terminal-output {
+  flex: 1;
+  padding: 10px 14px;
+  background: #000000;
+  overflow-y: auto;
+}
+
+  
+  .playground-terminal-input {
+    background: #232324;
+    color: #ffe66d;
+    border: none;
+    outline: none;
+    font-family: monospace;
+    font-size: 16px;
+    padding: 6px 8px;
+    border-radius: 4px;
+  }
+
+  .playground-stdin-input {
+    margin: 8px 0 8px 0;
+    padding: 6px 12px;
+    border-radius: 2px;
+    font-family: monospace;
+    font-size: 16px;
+    align-content: center;
+    width: 98%;
+    background: #000000;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+

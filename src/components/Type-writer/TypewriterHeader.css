@@ -1,0 +1,59 @@
+.typewriter-container h1 {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-family: 'Heavitas', sans-serif;
+  font-size: 70px;
+}
+
+.cursor {
+  display: inline-block;
+  font-weight: bold;
+  font-size: inherit;
+  color: #ffffff;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.arrow-container {
+  position: absolute;
+  top: 78%;
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arrow {
+  width: 70px;
+  height: auto;
+  opacity: 0;
+  animation: fade 1s infinite;
+}
+
+.arrow-1 {
+  animation-delay: 0s;
+}
+
+.arrow-2 {
+  animation-delay: 0.1s;
+}
+
+.arrow-3 {
+  animation-delay: 0.2s;
+}
+
+@keyframes fade {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
