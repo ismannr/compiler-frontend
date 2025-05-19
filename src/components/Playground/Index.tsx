@@ -52,7 +52,7 @@ const Playground = () => {
     setIsRunning(true);
     setTerminalOutput(`> Running ${language} code...\n`);
     try {
-      const res = await fetch(`http://${API_BASE_URL}/api/compiler/start`, {
+      const res = await fetch(`https://${API_BASE_URL}/api/compiler/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
