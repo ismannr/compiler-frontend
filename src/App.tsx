@@ -101,19 +101,19 @@ function App() {
       <nav className={`legend ${showLegend ? 'visible' : ''}`}>
         <ul>
           <li className={activeSection === 'about-main' ? 'active' : ''}>
-            <a href="#about-main" onClick={() => handleNavClick('about-main')}>About</a>
+            <a onClick={() => handleNavClick('about-main')}>About</a>
           </li>
           <li className={activeSection === 'experience' ? 'active' : ''}>
-            <a href="#experience" onClick={() => handleNavClick('experience')}>Experience</a>
+            <a onClick={() => handleNavClick('experience')}>Experience</a>
           </li>
           <li className={activeSection === 'publication' ? 'active' : ''}>
-            <a href="#publication" onClick={() => handleNavClick('publication')}>Publication</a>
+            <a onClick={() => handleNavClick('publication')}>Publication</a>
           </li>
           <li className={activeSection === 'playground' ? 'active' : ''}>
-            <a href="#playground" onClick={() => handleNavClick('playground')}>Playground</a>
+            <a onClick={() => handleNavClick('playground')}>Playground</a>
           </li>
           <li className={activeSection === 'contact' ? 'active' : ''}>
-            <a href="#contact" onClick={() => handleNavClick('contact')}>Contact</a>
+            <a onClick={() => handleNavClick('contact')}>Contact</a>
           </li>
         </ul>
       </nav>
