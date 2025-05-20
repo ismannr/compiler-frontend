@@ -22,7 +22,7 @@ const Contact = () => {
     setError("");
     setLoading(true);
     try {
-      const response = await fetch(`http://${API_BASE_URL}/api/send-mail/${encodeURIComponent(email)}`);
+      const response = await fetch(`https://${API_BASE_URL}/api/send-mail/${encodeURIComponent(email)}`);
       const result = await response.text();
       if (!response.ok) {
         throw new Error(result);
