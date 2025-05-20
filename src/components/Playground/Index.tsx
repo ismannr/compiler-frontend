@@ -73,7 +73,7 @@ const Playground = () => {
 
       const sessionId = json.data;
 
-      const socket = new WebSocket(`ws://${API_BASE_URL}/ws/session/${sessionId}`);
+      const socket = new WebSocket(`wss://${API_BASE_URL}/ws/session/${sessionId}`);
       socketRef.current = socket;
 
       socket.onopen = () => {
