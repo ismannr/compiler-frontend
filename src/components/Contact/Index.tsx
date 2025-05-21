@@ -84,7 +84,12 @@ const Contact = () => {
       <ToastContainer position="top-center" autoClose={3000} hideProgressBar aria-label={undefined} />
       <footer className="contact-footer">
         <div className="contact-icons">
-          <a href="/cv/cv.pdf" className="contact-icon" title="CV" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://drive.google.com/uc?id=1ynSndyY31vNjKcAdddorFMObE01d3c-R&export=download"
+            className="contact-icon"
+            title="CV"
+            download
+          >
             <img src="/images/cv.png" alt="CV" className="contact-img-icon" />
           </a>
           <a href="mailto:ismannurfauzann@gmail.com" className="contact-icon" title="Email">
