@@ -7,7 +7,7 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+  const API_BASE_URL = import.meta.env.MAIL_SENDER || "";
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -22,7 +22,15 @@ const Contact = () => {
     setError("");
     setLoading(true);
     try {
-      const response = await fetch(`https://${API_BASE_URL}/api/send-mail/${encodeURIComponent(email)}`);
+      const response = await fetch(API_BASE_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          recipient: email,
+        }),
+      });
       const result = await response.text();
       if (!response.ok) {
         throw new Error(result);
