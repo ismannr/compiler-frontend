@@ -7,7 +7,7 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const API_BASE_URL = import.meta.env.MAIL_SENDER || "";
+  const API_BASE_URL = import.meta.env.VITE_MAIL_SENDER || "";
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
