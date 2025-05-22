@@ -131,6 +131,13 @@ const Playground = () => {
     }
   };
 
+  const handleStandardInputSubmit = () => {
+    if (userInput.trim() !== "") {
+      setTerminalOutput((prev) => prev + `\n> ${userInput}`);
+      setUserInput(""); // Clear the input field after submission
+    }
+  };
+
   return (
     <section className="section playground-section" id="playground">
       <h2 className="playground-title">Playground</h2>
@@ -285,7 +292,12 @@ const Playground = () => {
               type="text"
               placeholder="Standard input (optional)"
               value={userInput}
-              onChange={e => setUserInput(e.target.value)}
+              onChange={(e) => setUserInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleStandardInputSubmit();
+                }
+              }}
               disabled={isBlocked || isChecking}
               className="playground-stdin-input"
             />
