@@ -3,7 +3,6 @@ import "./Contact.css";
 import { toast, ToastContainer } from "react-toastify";
 
 const Contact = () => {
-  const [, setEmailMessage] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,8 +21,6 @@ const Contact = () => {
     setError("");
     setLoading(true);
     try {
-      console.log("Sending email to:", email);
-      console.log("API URL:", API_BASE_URL);
       const response = await fetch(API_BASE_URL, {
         method: "POST",
         headers: {
@@ -33,16 +30,16 @@ const Contact = () => {
           recipient: email,
         }),
       });
-      const result = await response.text();
+      const result = await response.json();
       if (!response.ok) {
-        throw new Error(result);
+        throw new Error(result.message || "Failed to send email.");
       }
-      toast.success(result || "Email sent successfully!");
+
+      toast.success(result.message || "Email sent successfully!");
     } catch (err) {
       toast.error("Failed to send email.");
     }
     setLoading(false);
-    setEmailMessage("");
     setEmail("");
   };
 
