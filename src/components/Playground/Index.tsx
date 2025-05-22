@@ -26,7 +26,7 @@ const Playground = () => {
   useEffect(() => {
     const checkApiStatus = async () => {
       try {
-        const response = await fetch(`https://${API_BASE_URL}/api/compiler/start`, { method: "HEAD" });
+        const response = await fetch(`https://${API_BASE_URL}/api/health`, { method: "GET" });
         if (response.ok) {
           setIsBlocked(false);
         } else {
