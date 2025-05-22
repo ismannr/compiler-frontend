@@ -180,7 +180,7 @@ const Playground = () => {
                 </div>
               </div>
             )}
-            <div style={{ textAlign: "center", marginTop: 14, marginBottom: 10 }}>
+            <div style={{ textAlign: "center", marginTop: 14, marginBottom: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
               <label htmlFor="language-select" style={{ color: "white", fontWeight: "bold", fontFamily: "monospace", marginRight: 8 }}>
                 Language:
               </label>
@@ -220,7 +220,47 @@ const Playground = () => {
                     : "Running"
                   : "Run"}
               </button>
+              <span
+                onClick={() => setShowInfo(true)}
+                style={{
+                  marginLeft: 8,
+                  display: "inline-block",
+                  width: "24px",
+                  height: "24px",
+                  cursor: "pointer",
+                }}
+                title="Info"
+              >
+                <img
+                  src="https://img.icons8.com/ios/50/info--v1.png"
+                  alt="Info"
+                  style={{
+                    width: "24px",
+                    height: "24px",
+                    filter: "invert(100%)",
+                  }}
+                />
+              </span>
             </div>
+            {showInfo && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "20px",
+                  right: "20px",
+                  background: "#232324",
+                  color: "white",
+                  padding: "10px",
+                  borderRadius: "6px",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                  animation: "fadeIn 0.5s",
+                  zIndex: 1000,
+                  fontFamily: "monospace",
+                }}
+              >
+                The compiler backend service is only available from 9 AM to 5 PM, Monday to Friday.
+              </div>
+            )}
             <Editor
               height="500px"
               defaultLanguage={language === "node" ? "javascript" : language}
