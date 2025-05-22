@@ -11,11 +11,11 @@ const Playground = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [runHovered, setRunHovered] = useState(false);
-  const [showInfo, setShowInfo] = useState(false);
-  const [isBlocked, setIsBlocked] = useState(false);
-  const [isChecking, setIsChecking] = useState(true);
   const terminalRef = useRef<HTMLDivElement | null>(null);
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+  const [isChecking, setIsChecking] = useState(true);
+  const [isBlocked, setIsBlocked] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   useEffect(() => {
     if (terminalRef.current) {
@@ -128,13 +128,6 @@ const Playground = () => {
       console.error("Fetch error:", err);
       setTerminalOutput(prev => prev + "\n> Error connecting to server." + "\n");
       setIsRunning(false);
-    }
-  };
-
-  const handleStandardInputSubmit = () => {
-    if (userInput.trim() !== "") {
-      setTerminalOutput((prev) => prev + `\n> ${userInput}`);
-      setUserInput(""); // Clear the input field after submission
     }
   };
 
@@ -285,20 +278,105 @@ const Playground = () => {
                 ref={terminalRef}
                 style={{ whiteSpace: "pre-wrap", fontFamily: "monospace" }}
               >
-                {terminalOutput}
+                {
+                  (() => {
+                    const lines = terminalOutput.split("\n");
+                    let highlightNextPrompt = false;
+                    return lines.map((line, idx) => {
+                      line = line.trimStart();
+                      const userTagIndex = line.indexOf("[USER]");
+                      const isPromptLine = line.startsWith(">");
+
+                      if (line.includes("Process exited with code 0")) {
+                        highlightNextPrompt = true;
+                        return (
+                          <span key={idx} style={{ color: "#4fc3f7" }}>
+                            {line}
+                            {"\n"}
+                          </span>
+                        );
+                      }
+
+                      if (line.includes("WebSocket connected!")) {
+                        return (
+                          <span key={idx} style={{ color: "limegreen" }}>
+                            {line}
+                            {"\n"}
+                          </span>
+                        );
+                      }
+
+                      if (line.includes("This process is running inside a container.")) {
+                        return (
+                          <span key={idx} style={{ color: "white" }}>
+                            {line}
+                            {"\n"}
+                          </span>
+                        );
+                      }
+
+                      if (highlightNextPrompt && isPromptLine) {
+                        highlightNextPrompt = false;
+                        return (
+                          <span key={idx} style={{ color: "#4fc3f7" }}>
+                            {line}
+                            {"\n"}
+                          </span>
+                        );
+                      }
+
+                      if (userTagIndex !== -1) {
+                        const beforeUser = line.slice(0, userTagIndex);
+                        const userInput = line.slice(userTagIndex + "[USER]".length);
+
+                        return (
+                          <span key={idx}>
+                            {beforeUser}
+                            <span style={{ color: "limegreen" }}>{userInput}</span>
+                            {"\n"}
+                          </span>
+                        );
+                      }
+
+                      if (isPromptLine) {
+                        return (
+                          <span key={idx} style={{ color: "red" }}>
+                            {line}
+                            {"\n"}
+                          </span>
+                        );
+                      }
+
+                      return (
+                        <span key={idx}>
+                          {line}
+                          {"\n"}
+                        </span>
+                      );
+                    });
+                  })()
+                }
               </div>
             </div>
             <input
               type="text"
               placeholder="Standard input (optional)"
               value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleStandardInputSubmit();
+              onChange={e => setUserInput(e.target.value)}
+              onKeyDown={async (e) => {
+                if (e.key === "Enter" && userInput.trim() !== "") {
+                  setTerminalOutput(prev => prev + "[USER] " + userInput + "\n");
+                  const socket = socketRef.current;
+                  if (socket && socket.readyState === WebSocket.OPEN) {
+                    socket.send(userInput);
+                  } else {
+                    setTerminalOutput(prev => prev + "Socket not open" + "\n");
+                  }
+
+                  setUserInput("");
                 }
               }}
-              disabled={isBlocked || isChecking}
+
               className="playground-stdin-input"
             />
           </div>
