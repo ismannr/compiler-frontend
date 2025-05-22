@@ -22,6 +22,8 @@ const Contact = () => {
     setError("");
     setLoading(true);
     try {
+      console.log("Sending email to:", email);
+      console.log("API URL:", API_BASE_URL);
       const response = await fetch(API_BASE_URL, {
         method: "POST",
         headers: {
