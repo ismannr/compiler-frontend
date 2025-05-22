@@ -126,7 +126,7 @@ const Playground = () => {
 
     } catch (err) {
       console.error("Fetch error:", err);
-      setTerminalOutput(prev => prev + "\n> Error connecting to backend." + "\n");
+      setTerminalOutput(prev => prev + "\n> Error connecting to server." + "\n");
       setIsRunning(false);
     }
   };
@@ -175,8 +175,8 @@ const Playground = () => {
                   }}
                 >
                   {isChecking
-                    ? "Checking backend service status..."
-                    : "The compiler backend service is not reachable. Please try again later at 9AM-5PM on Mon-Fri (GMT+7)."}
+                    ? "Checking server status..."
+                    : "The compiler server is not reachable. Please try again later at 9AM-5PM on Mon-Fri (GMT+7)."}
                 </div>
               </div>
             )}
@@ -258,7 +258,9 @@ const Playground = () => {
                   fontFamily: "monospace",
                 }}
               >
-                The compiler backend service is only available from 9 AM to 5 PM, Monday to Friday.
+                This compiler running on Amazon Web Services.
+                <br /><br />
+                Note: The compiler server is only available from 9 AM to 5 PM, Monday to Friday.
               </div>
             )}
             <Editor
