@@ -193,7 +193,6 @@ const Playground = () => {
               >
                 <option value="java">Java</option>
                 <option value="go">Go</option>
-                <option value="c">C</option>
                 <option value="node">Node.js</option>
               </select>
               <button
