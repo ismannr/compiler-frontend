@@ -35,7 +35,9 @@ const Contact = () => {
         throw new Error(result.message || "Failed to send email.");
       }
 
-      toast.success(result.message || "Email sent successfully!");
+      toast.success(result.message || "Email sent successfully!", {
+        style: { color: "black" }
+      });
     } catch (err) {
       toast.error("Failed to send email.");
     }
