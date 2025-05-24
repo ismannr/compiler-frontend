@@ -101,7 +101,7 @@ const Contact = () => {
           >
             <img src="/images/cv.png" alt="CV" className="contact-img-icon" />
           </a>
-          <a href="mailto:ismannurfauzann@gmail.com" className="contact-icon" title="Email">
+          <a href="mailto:isyman.nurfauzan@irustama.com" className="contact-icon" title="Email">
             <img src="/images/email.png" alt="Email" className="contact-img-icon" />
           </a>
           <a href="https://wa.me/6287821224748" className="contact-icon" title="WhatsApp" target="_blank" rel="noopener noreferrer">
