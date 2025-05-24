@@ -176,7 +176,14 @@ const Playground = () => {
                 >
                   {isChecking
                     ? "Checking server status..."
-                    : "The compiler server is not reachable. Please try again later at 9AM-5PM on Mon-Fri (GMT+7)."}
+                    : (
+                      <>
+                        The compiler server is not reachable. Please try again later at 9AM–5PM on Mon–Fri (GMT+7).<br /><br />
+                        If you want to use the compiler outside working hours, don't hesitate to get in touch with me at <a href="mailto:isyman.nurfauzan@irustama.com">isyman.rustama@irustama.com</a>.
+                      </>
+                    )
+                  }
+
                 </div>
               </div>
             )}
